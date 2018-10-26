@@ -13,7 +13,7 @@ from sklearn.linear_model import RidgeCV
 from sklearn.linear_model import ElasticNet
 from sklearn.linear_model import ARDRegression
 
-header = sys.path[0]+'/'
+header = sys.path[0]+'/'#source path
 
 def write_file(data):
     """save a line data to line.txt in source folder"""
@@ -172,8 +172,8 @@ def predict_fft():
     
     plt.show()  
 
-#predict_line()
-predict_fft()
+predict_line()
+#predict_fft()
 
 
 

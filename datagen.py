@@ -21,7 +21,7 @@ plt.scatter(X,Y)
 
 t = np.linspace(0, 2, num_samples)
 y = np.sin(2*np.pi*2*t) + noise
-data_sig = np.hstack((t.reshape(num_samples,1),y.reshape(num_samples,1)))
+data_sig = y.reshape(num_samples,1)
 
 plt.figure(2)
 plt.scatter(t,y)
