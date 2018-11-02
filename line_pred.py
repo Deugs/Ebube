@@ -13,13 +13,40 @@ from sklearn.linear_model import RidgeCV
 from sklearn.linear_model import ElasticNet
 from sklearn.linear_model import ARDRegression
 
-header = sys.path[0]+'/'#source path
+
+import csv
+from openpyxl.workbook import Workbook
+from openpyxl import load_workbook
+
+
+header = sys.path[0]+'\\'#source path
 
 def write_file(data):
     """save a line data to line.txt in source folder"""
     f = open(header+'line.txt', 'w')
     f.write(str(data))
     f.close()
+    
+def write_xls(data, name):
+    book = Workbook()
+    sheet = book.active
+    for i in range(len(data)):
+        sheet['A'+str(i+1)] = data[i]
+    book.save(name)
+    
+def read_xls(name):
+    book = load_workbook(name)
+    sheet = book.active
+    data = []
+    ind = 1
+    while True:
+        y = sheet['A' +str(ind)].value
+        ind+=1
+        if y == None:
+            break
+        else:
+            data.append(y)
+    return data
 
 def read_file(name='line.txt'):
     """read a file form source folder"""
@@ -80,7 +107,10 @@ def sine(t, f):
 
 def predict_line(std = 0.8):
     #y = preprocess_str(read_file())
-    y = preprocess_list_line(gen_line_data(std=std))
+    #y = preprocess_list_line(gen_line_data(std=std))
+    print header+'line.xlsx'
+    y = read_xls(header+'line.xlsx')
+    #write_xls(y, header+'line.xlsx')
     n = len(y)
     x = np.linspace(0, 10, n)
     
@@ -174,8 +204,6 @@ def predict_fft():
 
 predict_line()
 #predict_fft()
-
-
 
 
 
