@@ -67,17 +67,17 @@ class Test(gui.QWidget):
         self.lblSlope = gui.QLabel('SLOPE')
         self.lblSlopeMin = gui.QLabel('min')
         self.txtSlopeMin = gui.QDoubleSpinBox()
-        self.txtSlopeMin.setRange(-1000,1000)
+        self.txtSlopeMin.setRange(-10,10)
         self.txtSlopeMin.setSingleStep(0.1)
-        self.txtSlopeMin.setValue(-10)
+        self.txtSlopeMin.setValue(-1)
         self.lblSlopeMax = gui.QLabel('max')
         self.txtSlopeMax = gui.QDoubleSpinBox()
-        self.txtSlopeMax.setRange(-1000,1000)
+        self.txtSlopeMax.setRange(-10,10)
         self.txtSlopeMax.setSingleStep(0.1)
-        self.txtSlopeMax.setValue(10)
+        self.txtSlopeMax.setValue(1)
         self.lblSlopeNum = gui.QLabel('Samples')
         self.txtSlopeNum = gui.QSpinBox()
-        self.txtSlopeNum.setRange(0,100000)
+        self.txtSlopeNum.setRange(0,20)
         self.txtSlopeNum.setValue(10)
         
         self.lblStd = gui.QLabel('NOISE')
@@ -93,19 +93,19 @@ class Test(gui.QWidget):
         self.txtStdMax.setValue(10)
         self.lblStdNum = gui.QLabel('Samples')
         self.txtStdNum = gui.QSpinBox()
-        self.txtStdNum.setRange(0,100000)
+        self.txtStdNum.setRange(0,20)
         self.txtStdNum.setValue(10)
         
         self.lblXscale = gui.QLabel('X-Scaling Factor')
         self.txtXscale = gui.QDoubleSpinBox()
-        self.txtXscale.setRange(-100000,100000)
+        self.txtXscale.setRange(-100,100)
         self.txtXscale.setSingleStep(0.01)
-        self.txtXscale.setValue(1)
+        self.txtXscale.setValue(0.1)
         
         self.lblSamples = gui.QLabel('Data Samples')
         self.txtSamples = gui.QSpinBox()
-        self.txtSamples.setRange(0,100000)
-        self.txtSamples.setValue(100)
+        self.txtSamples.setRange(1024,16384)
+        self.txtSamples.setValue(1024)
         
         self.btn = gui.QPushButton('Run Test')
         self.btn.clicked.connect(self.run_test)
@@ -239,7 +239,7 @@ class Test(gui.QWidget):
                 self.results.append(Data(title, m = self.slopes[i], std = self.stds[j], num_samples = self.txtSamples.value(), x_factor = self.txtXscale.value(), files = self.cbFiles.isChecked(), plots = self.cbPlots.isChecked()))
         
         self.res = [np.round(i.data['gradient']-i.data['grad_pred'], 3) for i in self.results]
-        #res = [np.round(i.data['grad_pred'],2) for i in self.results]
+        self.grad_pred = [np.round(i.data['grad_pred'],2) for i in self.results]
         self.res = np.reshape(self.res,(len(self.slopes), len(self.stds)))
         
         self.tblData.clear()
@@ -260,6 +260,10 @@ class Test(gui.QWidget):
         self.tblData.setHorizontalHeaderLabels(qt.QString(VLabels).split(','))
         self.tblData.setVerticalHeaderLabels(qt.QString(HLabels).split(','))
         
+        for i in range(len(self.slopes)):
+            for j in range(len(self.stds)):
+                self.tblData.setItem(i,j,gui.QTableWidgetItem(str(self.res[i,j]))) 
+        
         self.plot()
     
     def plot(self):
@@ -271,16 +275,11 @@ class Test(gui.QWidget):
     
     def plot3D(self):
         try:
-            for i in range(len(self.slopes)):
-                for j in range(len(self.stds)):
-                    
-                    self.tblData.setItem(i,j,gui.QTableWidgetItem(str(self.res[i,j]))) 
             
             '''plt.imshow(res)
             plt.colorbar()
             plt.grid()
             plt.show()'''
-            
             
             # Data generation
             alpha = self.slopes
@@ -305,9 +304,11 @@ class Test(gui.QWidget):
             
             ax.bar3d(Xi, Yi, Zi, dx, dy, dz, color = 'w')
             
+            ax.set_zlabel('Errors')
             ax.set_ylabel('Slope')
             ax.set_xlabel('Standard Deviation of Noise')
             ax.set_title('Slope Prediction Errors')
+            
             
             #ax.legend(['prediction','data'],loc='upper left',prop={'size':12})
             
