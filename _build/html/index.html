@@ -1,0 +1,439 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Welcome to Task 2 (Gradient Prediction)’s documentation! &mdash; Task 2 (Gradient Prediction) January 2019 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'January 2019',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Task 2 (Gradient Prediction) January 2019 documentation" href="#" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-task-2-gradient-prediction-s-documentation">
+<h1>Welcome to Task 2 (Gradient Prediction)&#8217;s documentation!<a class="headerlink" href="#welcome-to-task-2-gradient-prediction-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Contents:</p>
+<div class="toctree-wrapper compound">
+<ul class="simple">
+</ul>
+</div>
+</div>
+<div class="section" id="module-task2">
+<span id="task2-main"></span><h1>task2 main<a class="headerlink" href="#module-task2" title="Permalink to this headline">¶</a></h1>
+<p>This script is (please insert the question here)...</p>
+<dl class="class">
+<dt id="task2.Data">
+<em class="property">class </em><code class="descclassname">task2.</code><code class="descname">Data</code><span class="sig-paren">(</span><em>name</em>, <em>m=5</em>, <em>std=0.4</em>, <em>num_samples=100</em>, <em>x_factor=1</em>, <em>files=False</em>, <em>plots=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Data"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Data" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the test data generation class</p>
+<p>It is used to generate arbitrary sample data with specified
+properties given by the user.</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>name (str): the name associated with the generated data
+m (float): the gradient of the generated data. Default value is 5
+std (float): the standard deviation of the generated data. Default value is 0.4
+num_samples (int): the sample size of the generated data. Default value is 100
+x_factor (float): the x-scaling factor of the generated x-data. Default value is 5
+files (bool): variable specifies whether the data files should be saved. it saves if it&#8217;s value is true. Default value is False
+plots (bool): variable specifies whether the plots should be saved. it saves if it&#8217;s value is true. Default value is False</dd>
+</dl>
+<dl class="method">
+<dt id="task2.Data.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Data.evaluate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Data.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method predicts gradient using curve fitting</p>
+<p>It computes the gradient and y intercept of given data
+It also generated the predicted line</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Data.line">
+<code class="descname">line</code><span class="sig-paren">(</span><em>x</em>, <em>M</em>, <em>C</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Data.line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Data.line" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method computes line data from line equation parameters for fitting</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>x (np.array): x-data samples
+M (float): gradient of a straight line
+C (float): y-intercept of a straight line</dd>
+<dt>Returns:</dt>
+<dd>y (np.array): y-data samples</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Data.preprocess_list_line">
+<code class="descname">preprocess_list_line</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Data.preprocess_list_line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Data.preprocess_list_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to format y-data</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>data (list array): x-data and y-data pair</dd>
+<dt>Returns:</dt>
+<dd>return a list of y-data from generated data pair</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Data.save_plot">
+<code class="descname">save_plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Data.save_plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Data.save_plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to save plots as images in the image directory</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Data.write_xls">
+<code class="descname">write_xls</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Data.write_xls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Data.write_xls" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to save data as an excel files file</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="task2.Test">
+<em class="property">class </em><code class="descclassname">task2.</code><code class="descname">Test</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a class for running generated data tests</p>
+<p>it runs an n x m factorial experiment on various slope
+and gaussian noise ranges and renders the results as a
+2D or 3D plot. You also have the option of saving the 
+plots to an image directory of the data to a file directory 
+in a .xslx format.</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>parent (object): The parent class of the test class</dd>
+</dl>
+<dl class="method">
+<dt id="task2.Test.createButtons">
+<code class="descname">createButtons</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test.createButtons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test.createButtons" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to create the graphic user
+interface forms.</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Test.error">
+<code class="descname">error</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test.error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the method that handles error messages</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>msg (str): The error message to be displayed</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Test.info">
+<code class="descname">info</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test.info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the method that handles informative messages</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>msg (str): The information to be displayed</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Test.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method handles all plots.</p>
+<p>It plots in 2D if that option is checked otherwise
+the plot is rendered in 3D.</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Test.plot2D">
+<code class="descname">plot2D</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test.plot2D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test.plot2D" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method handles 2D plots</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Test.plot3D">
+<code class="descname">plot3D</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test.plot3D"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test.plot3D" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method handles 3D plots</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Test.run_test">
+<code class="descname">run_test</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Test.run_test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Test.run_test" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method runs the curve fitting test on data.</p>
+<p>it runs an n x m factorial experiment on various slope
+and gaussian noise ranges and renders the results as a
+2D or 3D plot.</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="task2.Window">
+<em class="property">class </em><code class="descclassname">task2.</code><code class="descname">Window</code><span class="sig-paren">(</span><em>parent=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main window form class</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>parent (object): The parent class of the window class</dd>
+</dl>
+<dl class="method">
+<dt id="task2.Window.createButtons">
+<code class="descname">createButtons</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.createButtons"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.createButtons" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is used to create the graphic user
+interface forms.</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.error">
+<code class="descname">error</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the method that handles error messages</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>msg (str): The error message to be displayed</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.info">
+<code class="descname">info</code><span class="sig-paren">(</span><em>msg</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.info"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.info" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the method that handles informative messages</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>msg (str): The information to be displayed</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.line">
+<code class="descname">line</code><span class="sig-paren">(</span><em>x</em>, <em>M</em>, <em>C</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.line"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.line" title="Permalink to this definition">¶</a></dt>
+<dd><p>line equation for fitting</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.plot"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method handles all plots.</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.preprocess">
+<code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a list of Y data from read file</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.read_file">
+<code class="descname">read_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.read_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.read_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method reads a .txt file form source folder</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>str: the data in the read file</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.read_xls">
+<code class="descname">read_xls</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.read_xls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.read_xls" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method reads an excel file from a specified path</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>name (str): specifies the path and name of the excel file to be read</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.runtest">
+<code class="descname">runtest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.runtest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.runtest" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method computes line data from line equation parameters for fitting</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.select_file">
+<code class="descname">select_file</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.select_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.select_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method helps the user to a select source data file</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>None</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="task2.Window.write_xls">
+<code class="descname">write_xls</code><span class="sig-paren">(</span><em>data</em>, <em>name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/task2.html#Window.write_xls"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#task2.Window.write_xls" title="Permalink to this definition">¶</a></dt>
+<dd><p>write data to excel file path</p>
+<dl class="docutils">
+<dt>Parameter:</dt>
+<dd>data (list): data to be written
+name (str): specifies the path and name of the excel file to be written</dd>
+<dt>Returns:</dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="#">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Welcome to Task 2 (Gradient Prediction)&#8217;s documentation!</a></li>
+<li><a class="reference internal" href="#module-task2">task2 main</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/index.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Gideon.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/index.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
